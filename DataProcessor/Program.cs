@@ -13,15 +13,6 @@ var builder = Host.CreateDefaultBuilder(args)
         services.AddHostedService<SensorDataWorker>();
     });
 
-// Добавляем запуск Kestrel и endpoint healthz
-builder.ConfigureWebHostDefaults(webBuilder =>
-{
-    webBuilder.Configure(app =>
-    {
-        app.MapGet("/healthz", () => "OK");
-    });
-});
-
 var host = builder.Build();
 
 await host.RunAsync();

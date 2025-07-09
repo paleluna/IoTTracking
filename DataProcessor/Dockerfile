@@ -9,7 +9,7 @@ COPY . ./
 RUN dotnet publish "DataProcessor.csproj" -c Release -o /app/publish
 
 # runtime stage
-FROM mcr.microsoft.com/dotnet/runtime:7.0 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "DataProcessor.dll"] 

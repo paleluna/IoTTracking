@@ -2,10 +2,23 @@ using Duende.IdentityServer;
 using Duende.IdentityServer.Models;
 using IdentityServer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using IdentityServer;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:3000") // React app
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 // IdentityServer configuration
 builder.Services.AddIdentityServer()
@@ -20,9 +33,14 @@ builder.Services.AddSingleton<Duende.IdentityServer.Services.ICorsPolicyService>
 
 var app = builder.Build();
 
+app.UseStaticFiles();
 app.UseRouting();
 
+app.UseCors();
+
 app.UseIdentityServer();
+
+app.UseAuthorization();
 
 app.MapGet("/", () => "IdentityServer is running...");
 app.MapGet("/healthz", () => Results.Ok("OK"));
