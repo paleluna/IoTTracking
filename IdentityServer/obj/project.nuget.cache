@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "dgSpecHash": "TPCUoGwApHQ=",
+  "success": true,
+  "projectFilePath": "c:\\MicroServiceIoT\\IdentityServer\\IdentityServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\joker\\.nuget\\packages\\duende.identityserver\\6.2.0\\duende.identityserver.6.2.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\duende.identityserver.storage\\6.2.0\\duende.identityserver.storage.6.2.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\identitymodel\\6.0.0\\identitymodel.6.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\7.0.0\\microsoft.aspnetcore.authentication.openidconnect.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.aspnetcore.dataprotection.abstractions\\7.0.0\\microsoft.aspnetcore.dataprotection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.15.1\\microsoft.identitymodel.jsonwebtokens.6.15.1.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.identitymodel.logging\\6.15.1\\microsoft.identitymodel.logging.6.15.1.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.15.1\\microsoft.identitymodel.protocols.6.15.1.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.15.1\\microsoft.identitymodel.protocols.openidconnect.6.15.1.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.15.1\\microsoft.identitymodel.tokens.6.15.1.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.15.1\\system.identitymodel.tokens.jwt.6.15.1.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "Package 'Duende.IdentityServer' 6.2.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-ff4q-64jc-gx98",
+      "projectPath": "c:\\MicroServiceIoT\\IdentityServer\\IdentityServer.csproj",
+      "warningLevel": 1,
+      "filePath": "c:\\MicroServiceIoT\\IdentityServer\\IdentityServer.csproj",
+      "libraryId": "Duende.IdentityServer",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
+}
