@@ -1,0 +1,26 @@
+{
+  "SwaggerEndPointsConfig": {
+    "SwaggerEndPoints": [
+      {
+        "Key": "deviceapi",
+        "Config": [
+          {
+            "Name": "Device API",
+            "Version": "v1",
+            "Url": "http://deviceapi/swagger/v1/swagger.json"
+          }
+        ]
+      },
+      {
+        "Key": "api",
+        "Config": [
+          {
+            "Name": "Data Ingestion API",
+            "Version": "v1",
+            "Url": "http://api/swagger/v1/swagger.json"
+          }
+        ]
+      }
+    ]
+  }
+}

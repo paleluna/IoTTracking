@@ -1,0 +1,134 @@
+version: "3.8"
+services:
+  postgres:
+    image: timescale/timescaledb:latest-pg14
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    env_file: .env
+
+  zookeeper:
+    image: bitnami/zookeeper:3.8
+    environment:
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: bitnami/kafka:2.8.1
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: PLAINTEXT://:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+    ports:
+      - "9092:9092"
+
+  identity:
+    build: ./IdentityServer
+    ports:
+      - "5001:80"
+    depends_on:
+      - postgres
+    volumes:
+      - identity_keys:/app/ids_keys
+
+  api:
+    build: ./DataIngestionApi
+    environment:
+      Kafka__BootstrapServers: kafka:9092
+      IdentityUrl: http://identity
+    depends_on:
+      - kafka
+      - identity
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  processor:
+    build: ./DataProcessor
+    environment:
+      Kafka__BootstrapServers: kafka:9092
+      Database__TimescaleConnectionString: Host=postgres;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+      Database__PostgresConnectionString: Host=postgres;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+    depends_on:
+      - kafka
+      - postgres
+    env_file: .env
+
+  gateway:
+    build: ./ApiGateway
+    ports:
+      - "5000:80"
+    environment:
+      IdentityUrl: http://identity:80
+    depends_on:
+      - api
+      - identity
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  web:
+    build: ./WebApp
+    ports:
+      - "3000:80"
+    depends_on:
+      - gateway
+
+  deviceapi:
+    build: ./DeviceApi
+    environment:
+      ConnectionStrings__Default: Host=postgres;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+    depends_on:
+      - postgres
+      - processor
+    env_file: .env
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  simulator:
+    build: ./DeviceSimulator
+    environment:
+      # simulator will request fresh token at runtime using these creds
+      IDENTITY_URL: http://identity
+      CLIENT_ID: service-client
+      CLIENT_SECRET: ${SERVICE_CLIENT_SECRET}
+    depends_on:
+      - gateway
+    env_file: .env
+
+  ncei:
+    build: ./NceiFetcher
+    environment:
+      NCEI_TOKEN: ${NCEI_TOKEN}
+      NCEI_DATASET_ID: GHCND
+      NCEI_DATATYPE_ID: TMAX
+      NCEI_STATION_ID: ${NCEI_STATION_ID}
+      FETCH_INTERVAL: 3600
+      IDENTITY_URL: http://identity
+      CLIENT_ID: service-client
+      CLIENT_SECRET: ${SERVICE_CLIENT_SECRET}
+      GATEWAY_URL: http://gateway
+    depends_on:
+      - gateway
+    env_file: .env
+
+volumes:
+  pgdata:
+  identity_keys:

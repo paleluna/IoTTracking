@@ -1,0 +1,67 @@
+{
+  "version": 2,
+  "dgSpecHash": "rcF0pu6oeSo=",
+  "success": true,
+  "projectFilePath": "c:\\MicroServiceIoT\\DataProcessor\\DataProcessor.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\joker\\.nuget\\packages\\confluent.kafka\\2.4.0\\confluent.kafka.2.4.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\librdkafka.redist\\2.4.0\\librdkafka.redist.2.4.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.configuration.binder\\7.0.0\\microsoft.extensions.configuration.binder.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.configuration.commandline\\7.0.0\\microsoft.extensions.configuration.commandline.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.configuration.environmentvariables\\7.0.0\\microsoft.extensions.configuration.environmentvariables.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\7.0.0\\microsoft.extensions.configuration.fileextensions.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.configuration.json\\7.0.0\\microsoft.extensions.configuration.json.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.configuration.usersecrets\\7.0.0\\microsoft.extensions.configuration.usersecrets.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\7.0.0\\microsoft.extensions.fileproviders.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\7.0.0\\microsoft.extensions.fileproviders.physical.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\7.0.0\\microsoft.extensions.filesystemglobbing.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.hosting\\7.0.0\\microsoft.extensions.hosting.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\7.0.0\\microsoft.extensions.hosting.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.logging.configuration\\7.0.0\\microsoft.extensions.logging.configuration.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.logging.console\\7.0.0\\microsoft.extensions.logging.console.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.logging.debug\\7.0.0\\microsoft.extensions.logging.debug.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.logging.eventlog\\7.0.0\\microsoft.extensions.logging.eventlog.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.logging.eventsource\\7.0.0\\microsoft.extensions.logging.eventsource.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\7.0.0\\microsoft.extensions.options.configurationextensions.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\npgsql\\7.0.1\\npgsql.7.0.1.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\system.diagnostics.eventlog\\7.0.0\\system.diagnostics.eventlog.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
+    "C:\\Users\\joker\\.nuget\\packages\\system.text.json\\7.0.1\\system.text.json.7.0.1.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'Npgsql' 7.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-x9vc-6hfv-hg8c",
+      "projectPath": "c:\\MicroServiceIoT\\DataProcessor\\DataProcessor.csproj",
+      "warningLevel": 1,
+      "filePath": "c:\\MicroServiceIoT\\DataProcessor\\DataProcessor.csproj",
+      "libraryId": "Npgsql",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'System.Text.Json' 7.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-hh2w-p6rv-4g7w",
+      "projectPath": "c:\\MicroServiceIoT\\DataProcessor\\DataProcessor.csproj",
+      "warningLevel": 1,
+      "filePath": "c:\\MicroServiceIoT\\DataProcessor\\DataProcessor.csproj",
+      "libraryId": "System.Text.Json",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
+}

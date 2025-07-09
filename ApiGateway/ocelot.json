@@ -1,0 +1,101 @@
+{
+  "Routes": [
+    {
+      "Key": "api_data",
+      "SwaggerKey": "api",
+      "DownstreamPathTemplate": "/api/data",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        { "Host": "api", "Port": 80 }
+      ],
+      "UpstreamPathTemplate": "/api/data",
+      "UpstreamHttpMethod": [ "POST", "OPTIONS" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "api" ]
+      }
+    },
+    {
+      "Key": "device_list",
+      "SwaggerKey": "deviceapi",
+      "DownstreamPathTemplate": "/devices",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{"Host":"deviceapi","Port":80}],
+      "UpstreamPathTemplate": "/devices",
+      "UpstreamHttpMethod": ["GET", "OPTIONS"],
+      "AuthenticationOptions":{
+        "AuthenticationProviderKey":"Bearer",
+        "AllowedScopes":["api"]
+      }
+    },
+    {
+      "Key": "device_data",
+      "SwaggerKey": "deviceapi",
+      "DownstreamPathTemplate": "/devices/{deviceId}/data",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{"Host":"deviceapi","Port":80}],
+      "UpstreamPathTemplate": "/devices/{deviceId}/data",
+      "UpstreamHttpMethod": ["GET", "OPTIONS"],
+      "AuthenticationOptions":{
+        "AuthenticationProviderKey":"Bearer",
+        "AllowedScopes":["api"]
+      }
+    },
+    {
+      "Key": "device_aggregates",
+      "SwaggerKey": "deviceapi",
+      "DownstreamPathTemplate": "/devices/{deviceId}/aggregates",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{"Host":"deviceapi","Port":80}],
+      "UpstreamPathTemplate": "/devices/{deviceId}/aggregates",
+      "UpstreamHttpMethod": ["GET", "OPTIONS"],
+      "AuthenticationOptions":{
+        "AuthenticationProviderKey":"Bearer",
+        "AllowedScopes":["api"]
+      }
+    },
+    {
+      "Key": "device_trend",
+      "SwaggerKey": "deviceapi",
+      "DownstreamPathTemplate": "/devices/{deviceId}/trend",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{"Host":"deviceapi","Port":80}],
+      "UpstreamPathTemplate": "/devices/{deviceId}/trend",
+      "UpstreamHttpMethod": ["GET", "OPTIONS"],
+      "AuthenticationOptions":{
+        "AuthenticationProviderKey":"Bearer",
+        "AllowedScopes":["api"]
+      }
+    },
+    {
+      "Key": "device_anomalies",
+      "SwaggerKey": "deviceapi",
+      "DownstreamPathTemplate": "/devices/{deviceId}/anomalies",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{"Host":"deviceapi","Port":80}],
+      "UpstreamPathTemplate": "/devices/{deviceId}/anomalies",
+      "UpstreamHttpMethod": ["GET", "OPTIONS"],
+      "AuthenticationOptions":{
+        "AuthenticationProviderKey":"Bearer",
+        "AllowedScopes":["api"]
+      }
+    }
+  ],
+  "Aggregates": [
+    {
+      "RouteKeys": ["device_data", "device_aggregates"],
+      "Description": "Summary: raw data + aggregates for a device",
+      "Aggregator": "DeviceSummaryAggregator",
+      "UpstreamPathTemplate": "/devices/{deviceId}/summary",
+      "UpstreamHttpMethod": ["GET"],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": ["api"]
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://gateway",
+    "RequestIdKey": "Oc-Request-Id"
+  }
+} 
