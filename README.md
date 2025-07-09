@@ -26,7 +26,7 @@
    Windows – Docker Desktop, Linux/macOS – пакет `docker-compose`.
 2. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/your-org/MicroServiceIoT.git
+   git clone MicroServiceIoT.git
    cd MicroServiceIoT
    ```
 3. Запустите весь стек:
@@ -42,23 +42,12 @@
 
 > ⚠️ Порты можно переопределить в `docker-compose.yml`.
 
+---
+
 ### Остановка
 ```bash
 docker-compose down
 ```
-
----
-
-## ⚙️ Конфигурация
-
-*Все переменные задаются в `docker-compose.yml` и прокидываются как `ENV`.*
-
-| Переменная | Где используется | Значение по умолчанию |
-| ---------- | ---------------- | --------------------- |
-| `POSTGRES_USER` / `POSTGRES_PASSWORD` | postgres | `user` / `pass` |
-| `Kafka__BootstrapServers` | api, processor | `kafka:9092` |
-| `IdentityUrl` | api, gateway | `http://identity` |
-| `Database__TimescaleConnectionString` | processor | `Host=postgres;Database=iot;Username=user;Password=pass` |
 
 ---
 
@@ -178,17 +167,6 @@ curl -X POST http://localhost:5000/api/data \
 ```
 
 ---
-
-## 🏗️ Расширение
-
-1. **Метаданные устройств** – добавьте сервис DeviceApi и таблицы в PostgreSQL.
-2. **Alerts / Notifications** – создайте Worker, который читает TimescaleDB и отправляет нотификации.
-3. **Мониторинг** – подключите `prometheus-net` и добавьте Prometheus + Grafana.
-4. **Логирование** – добавьте Serilog sink в Elasticsearch.
-
----
-
-Happy Hacking! 🎉
 
 ## 🐳 Docker Cheat-Sheet
 
