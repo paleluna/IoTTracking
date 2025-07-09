@@ -1,0 +1,75 @@
+MicroServiceIoT/
+│
+├── DataIngestionApi/         # ASP.NET Core Web API
+├── DataProcessor/            # .NET Worker Service
+├── ApiGateway/               # Ocelot
+├── IdentityServer/           # Auth
+├── WebApp/                   # React
+├── docker-compose.yml
+└── README.md
+
+WebApp/
+├── package.json            # зависимости: react, router, axios, chart.js …
+├── Dockerfile              # build (Node) → run (nginx)
+├── .dockerignore
+├── public/
+│   └── index.html
+└── src/
+    ├── index.js            # точка входа
+    ├── App.jsx             # роутинг + PrivateRoute
+    ├── components/
+    │   ├── Login.jsx       # форма логина (парольный flow)
+    │   ├── Dashboard.jsx   # список устройств + выбор
+    │   └── DeviceChart.jsx # график данных (Chart.js)
+    └── services/
+        ├── auth.js         # авторизация + token storage
+        └── api.js          # axios с bearer-токеном
+
+MicroServiceIoT/
+├── DataIngestionApi/         # <-- Здесь ASP.NET Core Web API
+├── DataProcessor/            # .NET Worker Service
+├── ApiGateway/               # Ocelot
+├── IdentityServer/           # Auth
+├── WebApp/                   # React
+├── docker-compose.yml
+└── README.md
+
+
+IdentityServer/
+├── Config.cs              # scopes, resources, clients
+├── TestUsers.cs           # список тест-юзеров
+├── Program.cs             # старт и конфигурация
+├── IdentityServer.csproj  # зависимости
+├── appsettings.json       # логи
+├── Dockerfile             # сборка контейнера
+└── .dockerignore
+
+DataIngestionApi/
+├── Controllers/
+│   └── DataController.cs   # POST /api/data (JWT) → Kafka
+├── Services/
+│   └── KafkaProducerService.cs
+├── Models/
+│   └── SensorDataDto.cs
+├── Options/
+│   └── KafkaOptions.cs
+├── Program.cs
+└── Dockerfile
+
+DataProcessor/
+├── Workers/
+│   └── SensorDataWorker.cs  # консьюмер Kafka, запись в TimescaleDB
+├── Models/
+│   └── SensorDataDto.cs
+├── Options/
+│   ├── KafkaOptions.cs
+│   └── DatabaseOptions.cs
+├── Program.cs
+└── Dockerfile
+
+ApiGateway/
+├── ocelot.json           # маршруты Gateway → микросервисы
+├── Program.cs            # конфигурация Ocelot + JWT
+└── Dockerfile
+
+
