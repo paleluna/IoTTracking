@@ -1,8 +1,9 @@
 namespace DeviceApi.Models;
 using System;
 
-public record SensorDataDto
+public class SensorDataDto
 {
-    public DateTime Timestamp { get; init; }
-    public double   Temperature { get; init; }
+    public DateTime Timestamp { get; set; }
+    public double Temperature { get; set; }
+    public double? Humidity { get; set; }
 } 

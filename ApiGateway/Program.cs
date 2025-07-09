@@ -41,8 +41,7 @@ builder.Services.AddAuthentication(options =>
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateAudience = false,
-        // Accept tokens issued via host port 5001 as well (browser obtains token there)
-        ValidIssuers = new[] { identityUrl, "http://localhost:5001" }
+        ValidateIssuer = false
     };
 });
 

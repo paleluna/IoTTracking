@@ -72,12 +72,13 @@ public class DeviceRepository
         {
             return await conn.QueryAsync<SensorDataDto>(@"
                 SELECT 
-                    timestamp::timestamptz AT TIME ZONE 'UTC' as timestamp,
-                    temperature
+                    timestamp,
+                    temperature,
+                    humidity
                 FROM sensor_data
                 WHERE device_id = @id
-                    AND timestamp >= @start::timestamptz
-                    AND timestamp < @end::timestamptz
+                    AND timestamp >= @start
+                    AND timestamp < @end
                 ORDER BY timestamp ASC;",
                 new { id = deviceId, start = monthStart, end = next });
         }

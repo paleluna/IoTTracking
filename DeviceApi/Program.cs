@@ -9,8 +9,11 @@ builder.Host.UseSerilog((ctx, lc) => lc
     .ReadFrom.Configuration(ctx.Configuration));
 
 // DB connection string via env
-var connStr = builder.Configuration.GetValue<string>("ConnectionStrings:Default") ?? "Host=postgres;Database=iot;Username=user;Password=pass";
-builder.Services.AddSingleton(new DeviceRepository(connStr));
+var connectionString = builder.Configuration.GetConnectionString("Default");
+builder.Services.AddSingleton(sp => new DeviceRepository(
+    connectionString, 
+    sp.GetRequiredService<ILogger<DeviceRepository>>())
+);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
